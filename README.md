@@ -4,9 +4,9 @@ Welcome to the official repository for the **Nadmir Open**, an invitational golf
 
 ## About
 - **Event:** Nadmir Open
-- **Founder:** [Your Name]
-- **Dates:** [Insert Dates]
-- **Location:** [Insert Locations]
+- **Founder:** Nadmir
+- **Dates:** April 8-11 2026
+- **Location:** Jacksonville, FL
 
 ## Site Overview
 This site is built using HTML and CSS, hosted free via GitHub Pages. It includes:
