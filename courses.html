@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Courses</title></head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --dark-green:#1C3D18; --light-green:#C1D99E; --gold:#D4AF37; --white:#fff; --body-bg:#f5f5f5; --card-bg:#fff; --shadow:rgba(0,0,0,0.1);}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--body-bg);color:#1f2937;}
+header{background:var(--dark-green);color:var(--white);text-align:center;padding:4rem 1rem;}
+header h1{font-family:'Playfair Display', serif;font-size:2.5rem;margin:0;}
+nav{display:flex;justify-content:center;flex-wrap:wrap;background:var(--dark-green);padding:1rem 0;}
+nav a{color:var(--white);text-decoration:none;margin:0 1rem;font-weight:600;transition:0.3s;}
+nav a:hover, nav a.active{color:var(--gold);}
+section{max-width:1000px;margin:3rem auto;padding:0 1.5rem;}
+h2{font-family:'Playfair Display', serif;border-bottom:3px solid var(--light-green);padding-bottom:0.5rem;margin-bottom:1.5rem;color:var(--dark-green);}
+.card{background:var(--card-bg);border-radius:12px;padding:1.5rem;box-shadow:0 10px 25px var(--shadow);margin-bottom:1.5rem;display:flex;flex-wrap:wrap;align-items:center;}
+.card img{width:200px;border-radius:12px;margin-right:1.5rem;margin-bottom:1rem;}
+footer{text-align:center;padding:2rem 1rem;background:var(--dark-green);color:var(--white);font-size:0.9rem;}
+@media(max-width:600px){ .card{flex-direction:column;align-items:flex-start;} .card img{margin-right:0;} header h1{font-size:2rem;} nav a{margin:0.5rem;} }
+</style>
+</head>
 <body>
-<header><h1>Golf Courses</h1></header>
-<nav><!-- same nav --></nav>
+<header>
+  <h1>Courses</h1>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="founder.html">Founder</a>
+  <a href="competitors.html">Competitors</a>
+  <a href="rules.html">Rules</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="courses.html" class="active">Courses</a>
+  <a href="leaderboard.html">Leaderboard</a>
+</nav>
 <section>
-<div>
-<h2><!-- EDIT HERE: Course Name -->Course 1</h2>
-<img src="course1.jpg" alt="Course 1" style="width:100%;border-radius:12px;"><!-- EDIT HERE: Upload photo -->
-<p><!-- EDIT HERE: Course Description -->Brief description goes here</p>
-</div>
-<div>
-<h2><!-- EDIT HERE: Course Name -->Course 2</h2>
-<img src="course2.jpg" alt="Course 2" style="width:100%;border-radius:12px;"><!-- EDIT HERE: Upload photo -->
-<p><!-- EDIT HERE: Course Description -->Brief description goes here</p>
-</div>
-<!-- Copy blocks to add more courses -->
+  <div class="card">
+    <img src="course1.jpg" alt="Course 1"><!-- EDIT HERE: Upload course photo -->
+    <div>
+      <h3><!-- EDIT HERE: Course Name -->Augusta National Replica</h3>
+      <p><!-- EDIT HERE: Course Description -->Famous for its stunning greens and fairways, this course challenges both strategy and skill.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="course2.jpg" alt="Course 2"><!-- EDIT HERE -->
+    <div>
+      <h3><!-- EDIT HERE: Course Name -->Pebble Beach Replica</h3>
+      <p><!-- EDIT HERE: Course Description -->Iconic ocean views and tricky holes make this course a highlight of the tournament.</p>
+    </div>
+  </div>
+
+  <!-- Copy .card blocks to add more courses -->
 </section>
 <footer>© Nadmir Open — MIT Licensed</footer>
 </body>
 </html>
-```
+
