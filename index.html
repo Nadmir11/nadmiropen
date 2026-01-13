@@ -4,32 +4,109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nadmir Open - Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* Same styling as before, optional to reuse */
+  /* COLORS */
+  :root {
+    --dark-green: #1C3D18;
+    --light-green: #C1D99E;
+    --gold: #D4AF37;
+    --white: #ffffff;
+    --body-bg: #f5f5f5;
+    --card-bg: #ffffff;
+    --shadow: rgba(0,0,0,0.1);
+  }
+
+  /* BODY & FONTS */
+  body { margin:0; font-family:'Inter',sans-serif; background:var(--body-bg); color:#1f2937; }
+  
+  header {
+    background: var(--dark-green);
+    color: var(--white);
+    text-align:center;
+    padding:4rem 1rem;
+    background-image: url('golf-bg.jpg'); /* optional background image of a golf course */
+    background-size: cover;
+    background-position: center;
+  }
+  header h1 { font-family:'Playfair Display', serif; font-size:3rem; margin:0; }
+  header p { font-size:1.2rem; margin:0.5rem 0; }
+
+  /* NAVIGATION */
+  nav {
+    display:flex; justify-content:center; flex-wrap:wrap;
+    background: var(--dark-green);
+    padding:1rem 0;
+  }
+  nav a {
+    color: var(--white); text-decoration:none; margin:0 1rem; font-weight:600;
+    transition: 0.3s; font-size:1.1rem;
+  }
+  nav a:hover, nav a.active { color: var(--gold); }
+
+  /* SECTIONS */
+  section { max-width:1000px; margin:3rem auto; padding:0 1.5rem; }
+  h2 { font-family:'Playfair Display', serif; border-bottom:3px solid var(--light-green); padding-bottom:0.5rem; margin-bottom:1.5rem; color:var(--dark-green); }
+
+  /* CARDS */
+  .card {
+    background: var(--card-bg);
+    border-radius:12px;
+    padding:1.5rem;
+    box-shadow: 0 10px 25px var(--shadow);
+    margin-bottom:1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align:center; padding:2rem 1rem;
+    background: var(--dark-green); color:var(--white); font-size:0.9rem;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:600px){
+    header h1 { font-size:2rem; }
+    nav a { margin:0.5rem; }
+  }
 </style>
 </head>
 <body>
 <header>
-<h1><!-- EDIT HERE: Event Name -->The Nadmir Open</h1>
-<p><!-- EDIT HERE: Event Description -->A Private Invitational Golf Tournament</p>
-<p><strong>Dates:</strong> <!-- EDIT HERE: Dates -->TBD &nbsp;|&nbsp; <strong>Location:</strong> <!-- EDIT HERE: Location -->Multiple Courses</p>
+  <h1><!-- EDIT HERE: Event Name -->The Nadmir Open</h1>
+  <p><!-- EDIT HERE: Event Description -->A Premier Invitational Golf Tournament</p>
+  <p><strong>Dates:</strong> <!-- EDIT HERE: Dates -->TBD &nbsp;|&nbsp; <strong>Location:</strong> <!-- EDIT HERE: Location -->Multiple Courses</p>
 </header>
+
 <nav>
-<a href="index.html">Home</a>
-<a href="founder.html">Founder</a>
-<a href="competitors.html">Competitors</a>
-<a href="rules.html">Rules</a>
-<a href="schedule.html">Schedule</a>
-<a href="courses.html">Courses</a>
-<a href="leaderboard.html">Leaderboard</a>
+  <a href="index.html" class="active">Home</a>
+  <a href="founder.html">Founder</a>
+  <a href="competitors.html">Competitors</a>
+  <a href="rules.html">Rules</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="courses.html">Courses</a>
+  <a href="leaderboard.html">Leaderboard</a>
 </nav>
+
 <section>
-<h2>About the Event</h2>
-<div><!-- EDIT HERE: Event Overview -->
-<p>Welcome to the Nadmir Open, a 4-day invitational golf tournament across multiple prestigious courses. Competition, camaraderie, and fun await!</p>
-</div>
+  <h2>About the Event</h2>
+  <div class="card">
+    <!-- EDIT HERE: Event Overview -->
+    <p>The Nadmir Open is a 4-day invitational golf tournament across multiple prestigious courses. Competition, camaraderie, and elegance combine to create an unforgettable experience for all participants.</p>
+  </div>
 </section>
+
+<section>
+  <h2>Highlights</h2>
+  <div class="card">
+    <ul>
+      <li><!-- EDIT HERE -->Exclusive invitation-only competition</li>
+      <li><!-- EDIT HERE -->Played on top-tier courses</li>
+      <li><!-- EDIT HERE -->Professional scoring and leaderboard</li>
+      <li><!-- EDIT HERE -->Elegant, Masters-style experience</li>
+    </ul>
+  </div>
+</section>
+
 <footer>© Nadmir Open — MIT Licensed</footer>
 </body>
 </html>
-```
