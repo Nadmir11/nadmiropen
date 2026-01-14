@@ -5,7 +5,7 @@ Welcome to the official repository for the **Nadmir Open**, an invitational golf
 ## About
 - **Event:** Nadmir Open
 - **Founder:** Nadmir
-- **Dates:** April 8-11, 2026
+- **Dates:** April 2026
 - **Location:** Jacksonville, FL
 
 ## Site Overview
