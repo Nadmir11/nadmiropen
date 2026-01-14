@@ -7,50 +7,87 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --dark-green:#1C3D18; --light-green:#C1D99E; --gold:#D4AF37;
-  --white:#ffffff; --body-bg:#f5f5f5; --card-bg:#ffffff; --shadow:rgba(0,0,0,0.1);
-}
-  /* Carousel Styles */
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  scroll-behavior: smooth;
-  padding-bottom: 1rem;
+  --dark-green:#1C3D18;
+  --light-green:#C1D99E;
+  --gold:#D4AF37;
+  --white:#ffffff;
+  --body-bg:#f5f5f5;
+  --card-bg:#ffffff;
+  --shadow:rgba(0,0,0,0.12);
 }
 
-.carousel img {
-  max-height: 300px;
-  flex: 0 0 auto;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.carousel img:hover {
-  transform: scale(1.05);
-}
-
-/* Hide scrollbar for clean look */
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-.carousel {
-  -ms-overflow-style: none;  /* IE 10+ */
-  scrollbar-width: none;     /* Firefox */
-}
-
+/* Base */
 body { margin:0; font-family:'Inter',sans-serif; background:var(--body-bg); color:#1f2937; }
 header { background: var(--dark-green); color: var(--white); text-align:center; padding:4rem 1rem; }
-header h1 { font-family:'Playfair Display', serif; font-size:2.5rem; margin:0; }
+header h1 { font-family:'Playfair Display', serif; font-size:2.7rem; margin:0; }
+
 nav { display:flex; justify-content:center; flex-wrap:wrap; background: var(--dark-green); padding:1rem 0; }
 nav a { color: var(--white); text-decoration:none; margin:0 1rem; font-weight:600; transition:0.3s; }
 nav a:hover, nav a.active { color: var(--gold); }
-section { max-width:1000px; margin:3rem auto; padding:0 1.5rem; }
-h2 { font-family:'Playfair Display', serif; border-bottom:3px solid var(--light-green); padding-bottom:0.5rem; margin-bottom:1.5rem; color:var(--dark-green); }
-.card { background: var(--card-bg); border-radius:12px; padding:1.5rem; box-shadow:0 10px 25px var(--shadow); margin-bottom:1.5rem; }
+
+section { max-width:1100px; margin:3.5rem auto; padding:0 1.5rem; }
+
+/* Card becomes a “photo feature” */
+.card {
+  background: var(--card-bg);
+  border-radius:18px;
+  box-shadow:0 20px 45px var(--shadow);
+  overflow:hidden;              /* lets carousel go edge-to-edge */
+  padding:0;                    /* remove padding so images can dominate */
+}
+
+/* BIG carousel (focus) */
+.carousel {
+  display:flex;
+  overflow-x:auto;
+  gap:1.25rem;
+  scroll-behavior:smooth;
+  padding:1.5rem;               /* breathing room around photos */
+  background:#eef1ec;            /* subtle gallery backing */
+}
+
+.carousel img {
+  height:420px;                 /* 🔥 BIGGER */
+  width:auto;
+  flex:0 0 auto;
+  border-radius:16px;
+  object-fit:cover;
+  cursor:pointer;
+  transition:transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow:0 14px 30px rgba(0,0,0,0.22);
+}
+
+.carousel img:hover {
+  transform:scale(1.05);
+}
+
+/* Hide scrollbar (still scrollable) */
+.carousel::-webkit-scrollbar { display:none; }
+.carousel { -ms-overflow-style:none; scrollbar-width:none; }
+
+/* Bio text area (secondary, clean) */
+.card p {
+  margin:0;
+  padding:1.75rem 1.9rem 2.2rem;
+  font-size:1.08rem;
+  line-height:1.7;
+  color:#374151;
+}
+
+/* Footer */
 footer { text-align:center; padding:2rem 1rem; background: var(--dark-green); color:var(--white); font-size:0.9rem; }
-@media(max-width:600px){ header h1{font-size:2rem;} nav a{margin:0.5rem;} }
+
+/* Responsive */
+@media(max-width:900px){
+  .carousel img { height:320px; }
+}
+@media(max-width:600px){
+  header h1{font-size:2.1rem;}
+  nav a{margin:0.5rem;}
+  .carousel { padding:1rem; gap:0.9rem; }
+  .carousel img { height:240px; }
+  .card p { padding:1.25rem 1.25rem 1.6rem; }
+}
 </style>
 </head>
 <body>
