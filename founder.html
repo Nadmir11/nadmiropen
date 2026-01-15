@@ -26,7 +26,7 @@ body{
   color:#1f2937;
 }
 
-/* NAV (match competitors page) */
+/* NAV */
 nav{
   display:flex;
   justify-content:center;
@@ -44,9 +44,10 @@ nav a{
   font-weight:600;
   transition:0.3s;
 }
-nav a:hover, nav a.active{ color:var(--gold); }
+nav a:hover,
+nav a.active{ color:var(--gold); }
 
-/* HEADER (same format as competitors: logo above title + underline) */
+/* HEADER */
 header{
   background:var(--dark-green);
   color:var(--white);
@@ -68,12 +69,11 @@ header::before{
 header > *{ position:relative; z-index:1; }
 
 .header-mark{
-  width:96px; /* visible but not dominant */
+  width:96px;
   height:auto;
   display:block;
   margin:0 auto 0.75rem;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));
-  opacity:0.98;
 }
 
 header h1{
@@ -94,7 +94,7 @@ header h1{
 
 /* LAYOUT */
 section{
-  max-width:1200px;  /* match competitors width */
+  max-width:1100px;
   margin:3.5rem auto;
   padding:0 1.5rem;
 }
@@ -105,49 +105,100 @@ section{
   border-radius:18px;
   box-shadow:0 20px 45px var(--shadow);
   overflow:hidden;
-}
-
-/* FEATURE CAROUSEL (scroll + preview + no crop) */
-.feature-wrap{
-  background:#eef1ec;
-  padding:1.5rem;
-}
-
-/* Same “big feel” as your old founder page, but show full image */
-.carousel{
-  display:flex;
-  gap:1.25rem;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  scroll-snap-type:x mandatory;
   padding:0;
 }
 
-/* Slides to keep sizing consistent + show previews */
-.slide{
-  flex:0 0 78%;
-  height:420px;              /* same as before */
-  border-radius:16px;
+/* --- CLICK CAROUSEL --- */
+.carousel-wrap{
+  position:relative;
+  background:#eef1ec;
+  padding:1.35rem;
+}
+
+.carousel-viewport{
   overflow:hidden;
-  box-shadow:0 14px 30px rgba(0,0,0,0.22);
-  scroll-snap-align:start;
-  background:#ffffff;        /* letterbox background */
+  border-radius:16px;
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform 0.45s ease;
+  will-change:transform;
+}
+
+.slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .slide img{
   width:100%;
-  height:100%;
-  object-fit:contain;        /* ✅ no cut-off */
-  display:block;
-  background:#ffffff;
+  height:520px;
+  object-fit:contain; /* ✅ shows entire image (no crop) */
+  background:#0b0f0c; /* subtle letterbox */
+  border-radius:16px;
+  box-shadow:0 14px 30px rgba(0,0,0,0.22);
 }
 
-/* Hide scrollbar */
-.carousel::-webkit-scrollbar{ display:none; }
-.carousel{ -ms-overflow-style:none; scrollbar-width:none; }
+/* Arrows */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.22);
+  background:rgba(0,0,0,0.35);
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 12px 25px rgba(0,0,0,0.25);
+  transition:transform 0.2s ease, background 0.2s ease;
+  z-index:5;
+}
+.arrow:hover{
+  background:rgba(0,0,0,0.48);
+  transform:translateY(-50%) scale(1.05);
+}
+.arrow:active{
+  transform:translateY(-50%) scale(0.98);
+}
+.arrow.left{ left:20px; }
+.arrow.right{ right:20px; }
+.arrow span{
+  font-size:22px;
+  line-height:1;
+  font-weight:800;
+}
+
+/* Dots */
+.dots{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  padding:12px 0 2px;
+}
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(31,41,55,0.28);
+  border:1px solid rgba(255,255,255,0.25);
+  cursor:pointer;
+  transition:transform 0.2s ease, background 0.2s ease;
+}
+.dot.active{
+  background:rgba(212,175,55,0.95);
+  transform:scale(1.15);
+}
 
 /* Bio */
-.bio{
+.card p{
   margin:0;
   padding:1.75rem 1.9rem 2.2rem;
   font-size:1.08rem;
@@ -155,7 +206,7 @@ section{
   color:#374151;
 }
 
-/* Footer */
+/* FOOTER */
 footer{
   text-align:center;
   padding:2rem 1rem;
@@ -164,23 +215,19 @@ footer{
   font-size:0.9rem;
 }
 
-/* Responsive */
-@media(max-width:1000px){
-  .slide{ flex-basis:86%; }
-}
+/* RESPONSIVE */
 @media(max-width:900px){
-  .slide{ height:320px; }
-}
-@media(max-width:768px){
-  .feature-wrap{ padding:1rem; }
-  .slide{ flex-basis:92%; height:260px; }
-  header h1{ font-size:2.35rem; }
-  .header-mark{ width:78px; margin-bottom:0.6rem; }
+  .slide img{ height:380px; }
 }
 @media(max-width:600px){
+  header h1{ font-size:2.35rem; }
   nav a{ margin:0.5rem; }
-  header{ padding:3rem 1rem 2.2rem; }
-  .bio{ padding:1.25rem 1.25rem 1.6rem; }
+  .carousel-wrap{ padding:1rem; }
+  .slide img{ height:260px; }
+  .arrow{ width:40px; height:40px; }
+  .arrow.left{ left:14px; }
+  .arrow.right{ right:14px; }
+  .card p{ padding:1.25rem 1.25rem 1.6rem; }
 }
 </style>
 </head>
@@ -207,19 +254,88 @@ footer{
 
 <section>
   <div class="card">
-    <div class="feature-wrap">
-      <div class="carousel" aria-label="Founder photo carousel">
-        <div class="slide"><img src="founder1.jpg" alt="Founder Photo 1"></div>
-        <div class="slide"><img src="founder2.jpg" alt="Founder Photo 2"></div>
-        <div class="slide"><img src="founder3.jpg" alt="Founder Photo 3"></div>
+
+    <!-- CLICK-THROUGH CAROUSEL -->
+    <div class="carousel-wrap" aria-label="Founder photo carousel">
+      <button class="arrow left" type="button" aria-label="Previous photo">
+        <span>‹</span>
+      </button>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <div class="slide"><img src="founder1.jpg" alt="Founder Photo 1"></div>
+          <div class="slide"><img src="founder2.jpg" alt="Founder Photo 2"></div>
+          <div class="slide"><img src="founder3.jpg" alt="Founder Photo 3"></div>
+          <!-- Copy <div class="slide">...</div> to add more -->
+        </div>
+      </div>
+
+      <button class="arrow right" type="button" aria-label="Next photo">
+        <span>›</span>
+      </button>
+
+      <div class="dots" aria-label="Carousel pagination dots">
+        <button class="dot active" type="button" aria-label="Go to photo 1"></button>
+        <button class="dot" type="button" aria-label="Go to photo 2"></button>
+        <button class="dot" type="button" aria-label="Go to photo 3"></button>
       </div>
     </div>
 
-    <p class="bio">Established in 2026 by the visionary golf mind Daniel H Rim, this inaugural championship stands as the birth of a new Major, a stage upon which greatness is tested and true champions emerge.</p>
+    <!-- BIO -->
+    <p>Established in 2026 by the visionary golf mind Daniel H Rim, this inaugural championship stands as the birth of a new Major, a stage upon which greatness is tested and true champions emerge.</p>
+
   </div>
 </section>
 
 <footer>© Nadmir Open — MIT Licensed</footer>
+
+<script>
+(function(){
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const prevBtn = document.querySelector(".arrow.left");
+  const nextBtn = document.querySelector(".arrow.right");
+  const dots = Array.from(document.querySelectorAll(".dot"));
+
+  let index = 0;
+
+  function update(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle("active", i === index));
+  }
+
+  function goTo(i){
+    index = (i + slides.length) % slides.length;
+    update();
+  }
+
+  prevBtn.addEventListener("click", ()=>goTo(index - 1));
+  nextBtn.addEventListener("click", ()=>goTo(index + 1));
+  dots.forEach((dot,i)=>dot.addEventListener("click", ()=>goTo(i)));
+
+  // Swipe support (mobile)
+  let startX = 0;
+  let isDown = false;
+
+  track.addEventListener("pointerdown", (e)=>{
+    isDown = true;
+    startX = e.clientX;
+    track.setPointerCapture(e.pointerId);
+  });
+
+  track.addEventListener("pointerup", (e)=>{
+    if(!isDown) return;
+    isDown = false;
+    const dx = e.clientX - startX;
+    if(Math.abs(dx) > 40){
+      if(dx < 0) goTo(index + 1);
+      else goTo(index - 1);
+    }
+  });
+
+  track.addEventListener("pointercancel", ()=>{ isDown = false; });
+})();
+</script>
 
 </body>
 </html>
