@@ -12,6 +12,8 @@
   --dark-green:#1C3D18;
   --light-green:#C1D99E;
   --gold:#D4AF37;
+  --silver:#C9CCD6;
+  --bronze:#C08A5B;
   --white:#ffffff;
   --body-bg:#f5f5f5;
   --card-bg:#ffffff;
@@ -120,49 +122,67 @@ section{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:560px; /* allows scroll on mobile */
+  min-width:900px;
 }
 
 thead th{
   background:var(--light-green);
   color:var(--dark-green);
-  font-weight:700;
+  font-weight:800;
   padding:0.85rem 0.9rem;
-  text-align:left;
-  font-size:0.95rem;
+  text-align:center;
+  font-size:0.9rem;
 }
+
+thead th.left{ text-align:left; }
 
 tbody td{
-  padding:0.9rem;
+  padding:0.85rem;
   border-bottom:1px solid #e5e7eb;
   font-size:0.95rem;
+  text-align:center;
 }
 
-/* Zebra striping */
+tbody td.left{ text-align:left; }
+
 tbody tr:nth-child(even){
   background:#f9fafb;
 }
 
-/* Leader highlight */
-tbody tr.leader{
+/* 🥇🥈🥉 Podium styling */
+tbody tr.first{
   background:linear-gradient(
     to right,
-    rgba(212,175,55,0.18),
-    rgba(212,175,55,0.05)
+    rgba(212,175,55,0.25),
+    rgba(212,175,55,0.08)
   );
-}
-tbody tr.leader td{
-  font-weight:700;
+  font-weight:800;
 }
 
-/* Columns */
+tbody tr.second{
+  background:linear-gradient(
+    to right,
+    rgba(201,204,214,0.35),
+    rgba(201,204,214,0.12)
+  );
+}
+
+tbody tr.third{
+  background:linear-gradient(
+    to right,
+    rgba(192,138,91,0.28),
+    rgba(192,138,91,0.10)
+  );
+}
+
+/* Column emphasis */
 .col-rank{
   width:90px;
-  font-weight:700;
+  font-weight:900;
 }
-.col-score{
-  width:100px;
-  font-weight:800;
+.col-handicap{
+  width:120px;
+  font-weight:900;
   color:var(--dark-green);
 }
 
@@ -214,33 +234,56 @@ footer{
     <table>
       <thead>
         <tr>
-          <th class="col-rank">Position</th>
-          <th>Player</th>
-          <th class="col-score">Score</th>
+          <th class="col-rank">Pos</th>
+          <th class="left">Player</th>
+          <th class="col-handicap">Handicap</th>
+          <th>R1</th>
+          <th>R2</th>
+          <th>R3</th>
+          <th>R4</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr class="leader">
+        <tr class="first">
           <td class="col-rank">1</td>
-          <td>David “Tom” Kim</td>
-          <td class="col-score">-10</td>
+          <td class="left">David “Tom” Kim</td>
+          <td class="col-handicap">-10</td>
+          <td>68</td>
+          <td>66</td>
+          <td>—</td>
+          <td>—</td>
         </tr>
-        <tr>
+
+        <tr class="second">
           <td class="col-rank">2</td>
-          <td>Roger Matsuyama</td>
-          <td class="col-score">-9</td>
+          <td class="left">Roger Matsuyama</td>
+          <td class="col-handicap">-9</td>
+          <td>69</td>
+          <td>66</td>
+          <td>—</td>
+          <td>—</td>
         </tr>
-        <tr>
+
+        <tr class="third">
           <td class="col-rank">3</td>
-          <td>John Rahm</td>
-          <td class="col-score">-6</td>
+          <td class="left">John Rahm</td>
+          <td class="col-handicap">-6</td>
+          <td>70</td>
+          <td>68</td>
+          <td>—</td>
+          <td>—</td>
         </tr>
+
         <tr>
           <td class="col-rank">4</td>
-          <td>Dan Woo Lee</td>
-          <td class="col-score">E</td>
+          <td class="left">Dan Woo Lee</td>
+          <td class="col-handicap">E</td>
+          <td>72</td>
+          <td>72</td>
+          <td>—</td>
+          <td>—</td>
         </tr>
-        <!-- Copy rows to add more players -->
       </tbody>
     </table>
   </div>
