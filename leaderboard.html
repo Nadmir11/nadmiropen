@@ -125,8 +125,9 @@ table{
   min-width:1200px;
 }
 
-thead th{
-  background:var(--light-green); /* unified green */
+/* TOP HEADER ROW (keep border) */
+thead tr:first-child th{
+  background:var(--light-green);
   color:var(--dark-green);
   font-weight:800;
   padding:0.75rem 0.6rem;
@@ -135,25 +136,27 @@ thead th{
   border-bottom:2px solid #d1d5db;
 }
 
-thead th.left{
-  text-align:left;
-}
-
-/* REMOVE special round coloring — inherit header green */
-thead th.round{
+/* SECOND HEADER ROW (remove middle border ONLY) */
+thead tr:nth-child(2) th{
   background:var(--light-green);
+  color:var(--dark-green);
+  font-weight:700;
+  padding:0.55rem 0.6rem;
+  text-align:center;
+  font-size:0.8rem;
+  border-bottom:none; /* ✅ removes random line */
 }
 
+thead th.left{ text-align:left; }
+
+/* BODY */
 tbody td{
   padding:0.8rem 0.6rem;
   border-bottom:1px solid #e5e7eb;
   font-size:0.9rem;
   text-align:center;
 }
-
-tbody td.left{
-  text-align:left;
-}
+tbody td.left{ text-align:left; }
 
 tbody tr:nth-child(even){
   background:#f9fafb;
@@ -236,10 +239,10 @@ footer{
           <th rowspan="2" class="col-rank">Pos</th>
           <th rowspan="2" class="left">Player</th>
           <th rowspan="2" class="col-handicap">Handicap</th>
-          <th colspan="2" class="round">Round 1</th>
-          <th colspan="2" class="round">Round 2</th>
-          <th colspan="2" class="round">Round 3</th>
-          <th colspan="2" class="round">Round 4</th>
+          <th colspan="2">Round 1</th>
+          <th colspan="2">Round 2</th>
+          <th colspan="2">Round 3</th>
+          <th colspan="2">Round 4</th>
         </tr>
         <tr>
           <th>Score</th>
