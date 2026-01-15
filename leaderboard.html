@@ -125,26 +125,32 @@ table{
   min-width:1200px;
 }
 
-/* TOP HEADER ROW (keep border) */
-thead tr:first-child th{
+/* Header base styling */
+thead th{
   background:var(--light-green);
   color:var(--dark-green);
-  font-weight:800;
   padding:0.75rem 0.6rem;
   text-align:center;
   font-size:0.85rem;
+  font-weight:800;
+}
+
+/* Keep the underline ONLY under Pos/Player/Handicap */
+thead th.keep-divider{
   border-bottom:2px solid #d1d5db;
 }
 
-/* SECOND HEADER ROW (remove middle border ONLY) */
+/* Remove divider under the round group headers so it blends */
+thead th.round-group{
+  border-bottom:none; /* ✅ THIS removes the grey line under Round 1–4 */
+}
+
+/* Second header row should blend too */
 thead tr:nth-child(2) th{
-  background:var(--light-green);
-  color:var(--dark-green);
   font-weight:700;
-  padding:0.55rem 0.6rem;
-  text-align:center;
   font-size:0.8rem;
-  border-bottom:none; /* ✅ removes random line */
+  padding:0.55rem 0.6rem;
+  border-bottom:none; /* ✅ no random line */
 }
 
 thead th.left{ text-align:left; }
@@ -236,23 +242,20 @@ footer{
     <table>
       <thead>
         <tr>
-          <th rowspan="2" class="col-rank">Pos</th>
-          <th rowspan="2" class="left">Player</th>
-          <th rowspan="2" class="col-handicap">Handicap</th>
-          <th colspan="2">Round 1</th>
-          <th colspan="2">Round 2</th>
-          <th colspan="2">Round 3</th>
-          <th colspan="2">Round 4</th>
+          <th rowspan="2" class="col-rank keep-divider">Pos</th>
+          <th rowspan="2" class="left keep-divider">Player</th>
+          <th rowspan="2" class="col-handicap keep-divider">Handicap</th>
+
+          <th colspan="2" class="round-group">Round 1</th>
+          <th colspan="2" class="round-group">Round 2</th>
+          <th colspan="2" class="round-group">Round 3</th>
+          <th colspan="2" class="round-group">Round 4</th>
         </tr>
         <tr>
-          <th>Score</th>
-          <th>Points</th>
-          <th>Score</th>
-          <th>Points</th>
-          <th>Score</th>
-          <th>Points</th>
-          <th>Score</th>
-          <th>Points</th>
+          <th>Score</th><th>Points</th>
+          <th>Score</th><th>Points</th>
+          <th>Score</th><th>Points</th>
+          <th>Score</th><th>Points</th>
         </tr>
       </thead>
 
