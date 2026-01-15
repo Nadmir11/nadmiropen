@@ -147,4 +147,106 @@ tbody tr:nth-child(even){
 tbody tr.leader{
   background:linear-gradient(
     to right,
-    rgba(212
+    rgba(212,175,55,0.18),
+    rgba(212,175,55,0.05)
+  );
+}
+tbody tr.leader td{
+  font-weight:700;
+}
+
+/* Columns */
+.col-rank{
+  width:90px;
+  font-weight:700;
+}
+.col-score{
+  width:100px;
+  font-weight:800;
+  color:var(--dark-green);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:2rem 1rem;
+  background:var(--dark-green);
+  color:var(--white);
+  font-size:0.9rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header h1{ font-size:2.35rem; }
+  .header-mark{ width:78px; }
+}
+@media(max-width:600px){
+  nav a{ margin:0.5rem; }
+  header{ padding:3rem 1rem 2.2rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="founder.html">Founder</a>
+  <a href="competitors.html">Competitors</a>
+  <a href="rules.html">Rules</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="courses.html">Courses</a>
+  <a href="leaderboard.html" class="active">Leaderboard</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <img class="header-mark" src="nadmir-logo.png" alt="Nadmir Open Mark">
+  <h1>Leaderboard</h1>
+  <div class="header-underline"></div>
+</header>
+
+<section>
+  <div class="card">
+    <h2 class="section-title">Current Standings</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="col-rank">Position</th>
+          <th>Player</th>
+          <th class="col-score">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="leader">
+          <td class="col-rank">1</td>
+          <td>David “Tom” Kim</td>
+          <td class="col-score">-10</td>
+        </tr>
+        <tr>
+          <td class="col-rank">2</td>
+          <td>Roger Matsuyama</td>
+          <td class="col-score">-9</td>
+        </tr>
+        <tr>
+          <td class="col-rank">3</td>
+          <td>John Rahm</td>
+          <td class="col-score">-6</td>
+        </tr>
+        <tr>
+          <td class="col-rank">4</td>
+          <td>Dan Woo Lee</td>
+          <td class="col-score">E</td>
+        </tr>
+        <!-- Copy rows to add more players -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>© Nadmir Open — MIT Licensed</footer>
+
+</body>
+</html>
