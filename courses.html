@@ -1,30 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Courses</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nadmir Open – Courses</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-:root { --dark-green:#1C3D18; --light-green:#C1D99E; --gold:#D4AF37; --white:#fff; --body-bg:#f5f5f5; --card-bg:#fff; --shadow:rgba(0,0,0,0.1);}
-body{margin:0;font-family:'Inter',sans-serif;background:var(--body-bg);color:#1f2937;}
-header{background:var(--dark-green);color:var(--white);text-align:center;padding:4rem 1rem;}
-header h1{font-family:'Playfair Display', serif;font-size:2.5rem;margin:0;}
-nav{display:flex;justify-content:center;flex-wrap:wrap;background:var(--dark-green);padding:1rem 0;}
-nav a{color:var(--white);text-decoration:none;margin:0 1rem;font-weight:600;transition:0.3s;}
-nav a:hover, nav a.active{color:var(--gold);}
-section{max-width:1000px;margin:3rem auto;padding:0 1.5rem;}
-h2{font-family:'Playfair Display', serif;border-bottom:3px solid var(--light-green);padding-bottom:0.5rem;margin-bottom:1.5rem;color:var(--dark-green);}
-.card{background:var(--card-bg);border-radius:12px;padding:1.5rem;box-shadow:0 10px 25px var(--shadow);margin-bottom:1.5rem;display:flex;flex-wrap:wrap;align-items:center;}
-.card img{width:200px;border-radius:12px;margin-right:1.5rem;margin-bottom:1rem;}
-footer{text-align:center;padding:2rem 1rem;background:var(--dark-green);color:var(--white);font-size:0.9rem;}
-@media(max-width:600px){ .card{flex-direction:column;align-items:flex-start;} .card img{margin-right:0;} header h1{font-size:2rem;} nav a{margin:0.5rem;} }
+:root{
+  --dark-green:#1C3D18;
+  --light-green:#C1D99E;
+  --gold:#D4AF37;
+  --white:#ffffff;
+  --body-bg:#f5f5f5;
+  --card-bg:#ffffff;
+  --shadow:rgba(0,0,0,0.12);
+}
+
+/* BASE */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--body-bg);
+  color:#1f2937;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  background:var(--dark-green);
+  padding:1rem 0;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+nav a{
+  color:var(--white);
+  text-decoration:none;
+  margin:0 1rem;
+  font-weight:600;
+  transition:0.3s;
+}
+nav a:hover, nav a.active{ color:var(--gold); }
+
+/* HEADER (same as competitors) */
+header{
+  background:var(--dark-green);
+  color:var(--white);
+  padding:3.6rem 1rem 2.7rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.10), transparent 55%),
+    radial-gradient(circle at 50% 100%, rgba(0,0,0,0.35), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.06));
+  pointer-events:none;
+}
+header > *{ position:relative; z-index:1; }
+
+.header-mark{
+  width:96px;
+  height:auto;
+  display:block;
+  margin:0 auto 0.75rem;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));
+  opacity:0.98;
+}
+header h1{
+  font-family:'Playfair Display', serif;
+  font-size:2.95rem;
+  margin:0;
+  letter-spacing:0.02em;
+  text-shadow:0 10px 22px rgba(0,0,0,0.35);
+}
+.header-underline{
+  width:170px;
+  height:3px;
+  margin:1rem auto 0;
+  background:linear-gradient(to right, transparent, var(--gold), transparent);
+  border-radius:999px;
+}
+
+/* LAYOUT */
+section{
+  max-width:1200px;
+  margin:3.5rem auto;
+  padding:0 1.5rem;
+}
+
+/* GRID: makes it feel like a modern “course gallery” */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:1.5rem;
+}
+
+/* COURSE CARD */
+.course{
+  background:var(--card-bg);
+  border-radius:18px;
+  box-shadow:0 20px 40px var(--shadow);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Image: show entire image without cropping */
+.course-media{
+  background:#eef1ec;
+  padding:1rem;
+}
+.course-media img{
+  width:100%;
+  height:280px;
+  object-fit:contain; /* ✅ no cut off */
+  background:#fff;
+  border-radius:14px;
+  display:block;
+  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Text */
+.course-body{
+  padding:1.25rem 1.35rem 1.45rem;
+}
+.course-title{
+  font-family:'Playfair Display', serif;
+  font-size:1.55rem;
+  color:var(--dark-green);
+  margin:0 0 0.55rem 0;
+}
+.course-desc{
+  margin:0;
+  font-size:1.02rem;
+  line-height:1.7;
+  color:#374151;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:2rem 1rem;
+  background:var(--dark-green);
+  color:var(--white);
+  font-size:0.9rem;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .grid{ grid-template-columns: 1fr; }
+  .course-media img{ height:260px; }
+}
+@media(max-width:768px){
+  header h1{ font-size:2.35rem; }
+  .header-mark{ width:78px; margin-bottom:0.6rem; }
+}
+@media(max-width:600px){
+  nav a{ margin:0.5rem; }
+  header{ padding:3rem 1rem 2.2rem; }
+  .course-media{ padding:0.9rem; }
+}
 </style>
 </head>
+
 <body>
-<header>
-  <h1>Courses</h1>
-</header>
+
+<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="founder.html">Founder</a>
@@ -34,26 +184,44 @@ footer{text-align:center;padding:2rem 1rem;background:var(--dark-green);color:va
   <a href="courses.html" class="active">Courses</a>
   <a href="leaderboard.html">Leaderboard</a>
 </nav>
+
+<!-- HEADER -->
+<header>
+  <img class="header-mark" src="nadmir-logo.png" alt="Nadmir Open Mark">
+  <h1>Courses</h1>
+  <div class="header-underline"></div>
+</header>
+
 <section>
-  <div class="card">
-    <img src="course1.jpg" alt="Course 1"><!-- EDIT HERE: Upload course photo -->
-    <div>
-      <h3><!-- EDIT HERE: Course Name -->Augusta National Replica</h3>
-      <p><!-- EDIT HERE: Course Description -->Famous for its stunning greens and fairways, this course challenges both strategy and skill.</p>
-    </div>
-  </div>
+  <div class="grid">
 
-  <div class="card">
-    <img src="course2.jpg" alt="Course 2"><!-- EDIT HERE -->
-    <div>
-      <h3><!-- EDIT HERE: Course Name -->Pebble Beach Replica</h3>
-      <p><!-- EDIT HERE: Course Description -->Iconic ocean views and tricky holes make this course a highlight of the tournament.</p>
+    <!-- COURSE 1 -->
+    <div class="course">
+      <div class="course-media">
+        <img src="course1.jpg" alt="Course 1">
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Augusta National Replica</h3>
+        <p class="course-desc">Famous for its stunning greens and fairways, this course challenges both strategy and skill.</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Copy .card blocks to add more courses -->
+    <!-- COURSE 2 -->
+    <div class="course">
+      <div class="course-media">
+        <img src="course2.jpg" alt="Course 2">
+      </div>
+      <div class="course-body">
+        <h3 class="course-title">Pebble Beach Replica</h3>
+        <p class="course-desc">Iconic ocean views and tricky holes make this course a highlight of the tournament.</p>
+      </div>
+    </div>
+
+    <!-- Copy a .course block to add more courses -->
+
+  </div>
 </section>
+
 <footer>© Nadmir Open — MIT Licensed</footer>
 </body>
 </html>
-
