@@ -46,7 +46,7 @@ nav a{
 nav a:hover,
 nav a.active{ color:var(--gold); }
 
-/* HEADER (logo style to match homepage) */
+/* HEADER */
 header{
   background:var(--dark-green);
   text-align:center;
@@ -97,16 +97,17 @@ section{
   overflow:hidden;
 }
 
-/* CAROUSEL WRAP (buttons + scroll area) */
+/* CAROUSEL WRAP */
 .carousel-wrap{
   position:relative;
   background:#f0f2ee;
+  padding:1.5rem;
 }
 
-/* ARROW BUTTONS */
+/* ARROWS */
 .carousel-btn{
   position:absolute;
-  top:50%;
+  top:calc(1.5rem + 180px);  /* vertically centered relative to 360px image height */
   transform:translateY(-50%);
   width:46px;
   height:46px;
@@ -119,129 +120,127 @@ section{
   align-items:center;
   justify-content:center;
   z-index:5;
-  transition:transform 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+  transition:transform 0.18s ease, background 0.18s ease;
   backdrop-filter: blur(6px);
 }
 .carousel-btn:hover{
   transform:translateY(-50%) scale(1.05);
   background:rgba(0,0,0,0.58);
 }
-.carousel-btn:active{
-  transform:translateY(-50%) scale(0.98);
-}
-.carousel-btn.left{ left:14px; }
-.carousel-btn.right{ right:14px; }
+.carousel-btn.left{ left:18px; }
+.carousel-btn.right{ right:18px; }
 
-/* Hide buttons on touch-only if you want (we keep them visible; scroll still works) */
-@media (max-width:600px){
-  .carousel-btn{ width:42px; height:42px; }
-}
-
-/* CAROUSEL: preview + snap */
+/* CAROUSEL */
 .carousel{
   display:flex;
   gap:1.25rem;
   overflow-x:auto;
   scroll-behavior:smooth;
-  padding:1.5rem;
   scroll-snap-type:x mandatory;
+  padding:0; /* already padded by wrap */
 }
 
-/* “Slides” show preview of next */
+/* Slides: keep the same “big photo” feel as before (360px tall),
+   but still show a preview of next image */
 .slide{
-  position:relative;
-  flex:0 0 72%;              /* shows a preview of next image */
-  height:380px;
+  flex:0 0 78%;
+  height:360px;              /* same size as before */
   border-radius:16px;
   overflow:hidden;
   box-shadow:0 12px 25px rgba(0,0,0,0.20);
   scroll-snap-align:start;
   background:#ffffff;
 }
-
-/* Image behavior:
-   - contain = no cropping (full photo visible)
-   - change to cover if you prefer cinematic crops
-*/
 .slide img{
   width:100%;
   height:100%;
-  object-fit:contain;         /* ✅ no cut-off */
+  object-fit:cover;          /* same feel as before */
   display:block;
-  background:#fff;
 }
 
-/* Overlay on FIRST slide */
-.overlay{
-  position:absolute;
-  inset:auto 0 0 0;
-  padding:1.05rem 1.1rem;
-  background:linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.05));
-  color:#fff;
+/* Title card BELOW the first photo */
+.title-card{
+  margin-top:1.1rem;
+  padding:1.1rem 1.25rem;
+  background:#ffffff;
+  border-radius:14px;
+  box-shadow:0 10px 22px rgba(0,0,0,0.10);
+  border:1px solid rgba(0,0,0,0.06);
 }
-.overlay .name{
+.title-top{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:0.6rem 1rem;
+  margin-bottom:0.75rem;
+}
+.title-name{
   font-family:'Playfair Display', serif;
   font-size:1.55rem;
-  margin:0 0 0.25rem 0;
-  letter-spacing:0.01em;
+  color:var(--dark-green);
+  margin:0;
 }
-.overlay .nick{
-  margin:0 0 0.75rem 0;
-  color:rgba(255,255,255,0.90);
-  font-weight:600;
+.title-nick{
+  margin:0;
+  font-weight:700;
+  color:#374151;
+  opacity:0.9;
 }
 .chips{
   display:flex;
   flex-wrap:wrap;
   gap:0.5rem;
-  margin-bottom:0.75rem;
+  margin:0 0 0.85rem 0;
+  padding:0;
+  list-style:none;
 }
 .chip{
   font-size:0.82rem;
   padding:0.35rem 0.55rem;
   border-radius:999px;
-  border:1px solid rgba(212,175,55,0.6);
-  color:#fff;
-  background:rgba(0,0,0,0.25);
-  backdrop-filter: blur(4px);
+  border:1px solid rgba(212,175,55,0.45);
+  color:#1f2937;
+  background:rgba(212,175,55,0.10);
 }
 .stats{
   display:flex;
   flex-wrap:wrap;
-  gap:0.75rem 1.25rem;
-  font-size:0.9rem;
+  gap:0.7rem 1.25rem;
+  font-size:0.92rem;
+  color:#374151;
 }
-.stat strong{
+.stats strong{
   color:var(--gold);
-  font-weight:700;
+  font-weight:800;
 }
 
-/* Hide scrollbar but keep scrolling */
+/* Hide scrollbar */
 .carousel::-webkit-scrollbar{ display:none; }
 .carousel{ -ms-overflow-style:none; scrollbar-width:none; }
 
-/* Text area */
-.card h3{
-  font-family:'Playfair Display', serif;
-  font-size:1.75rem;
-  margin:1.5rem 1.75rem 0.75rem;
-  color:var(--dark-green);
-}
-.card p{
-  margin:0 1.75rem 2rem;
+/* BIO ONLY (no repeated name) */
+.bio{
+  margin:0;
+  padding:1.65rem 1.75rem 2.1rem;
   font-size:1.05rem;
   line-height:1.7;
   color:#374151;
 }
 
-/* Responsive sizing */
-@media(max-width:900px){
-  .slide{ flex-basis:84%; height:300px; }
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .slide{ flex-basis:86%; }
+}
+@media(max-width:768px){
+  .carousel-wrap{ padding:1rem; }
+  .slide{ height:260px; flex-basis:92%; }
+  .carousel-btn{ top:calc(1rem + 130px); }
+  .title-name{ font-size:1.32rem; }
 }
 @media(max-width:600px){
+  .carousel-btn{ width:42px; height:42px; }
+  nav a{ margin:0.5rem; }
   header{ padding:2.6rem 1rem 2rem; }
-  .slide{ flex-basis:92%; height:250px; }
-  .overlay .name{ font-size:1.25rem; }
 }
 
 /* FOOTER */
@@ -282,38 +281,32 @@ footer{
       <button class="carousel-btn left" type="button" aria-label="Scroll left">‹</button>
 
       <div class="carousel" aria-label="Daniel H Rim photo carousel">
-        <!-- Slide 1 with overlay -->
-        <div class="slide">
-          <img src="dan-1.jpg" alt="Daniel H Rim photo 1">
-          <div class="overlay">
-            <p class="name">Daniel H Rim</p>
-            <p class="nick">“Dan Woo Lee”</p>
-            <div class="chips">
-              <span class="chip">Defied the odds</span>
-              <span class="chip">4 Majors (Year 1)</span>
-              <span class="chip">JDC Champion</span>
-            </div>
-            <div class="stats">
-              <span class="stat"><strong>Style:</strong> Aggressive</span>
-              <span class="stat"><strong>Form:</strong> Unknown</span>
-              <span class="stat"><strong>Pressure:</strong> Elite</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="dan-2.jpg" alt="Daniel H Rim photo 2">
-        </div>
-        <div class="slide">
-          <img src="dan-3.jpg" alt="Daniel H Rim photo 3">
-        </div>
+        <div class="slide"><img src="dan-1.jpg" alt="Daniel H Rim photo 1"></div>
+        <div class="slide"><img src="dan-2.jpg" alt="Daniel H Rim photo 2"></div>
+        <div class="slide"><img src="dan-3.jpg" alt="Daniel H Rim photo 3"></div>
       </div>
 
       <button class="carousel-btn right" type="button" aria-label="Scroll right">›</button>
+
+      <div class="title-card">
+        <div class="title-top">
+          <p class="title-name">Daniel H Rim</p>
+          <p class="title-nick">“Dan Woo Lee”</p>
+        </div>
+        <ul class="chips">
+          <li class="chip">Defied the odds</li>
+          <li class="chip">4 Majors (Year 1)</li>
+          <li class="chip">JDC Champion</li>
+        </ul>
+        <div class="stats">
+          <span><strong>Style:</strong> Aggressive</span>
+          <span><strong>Form:</strong> Unknown</span>
+          <span><strong>Pressure:</strong> Elite</span>
+        </div>
+      </div>
     </div>
 
-    <h3>Daniel H Rim</h3>
-    <p>Starting golf at a late age of 28, "Dan Woo Lee" was able to defy all odds to became a professional golfer in under a year winning all 4 Majors and the JDC on his first year on the PGA tour. He promptly retired after, shocking and upsetting millions around the world. Now back from retirement, can he silence the haters and show that he isn't a one year wonder?</p>
+    <p class="bio">Starting golf at a late age of 28, "Dan Woo Lee" was able to defy all odds to became a professional golfer in under a year winning all 4 Majors and the JDC on his first year on the PGA tour. He promptly retired after, shocking and upsetting millions around the world. Now back from retirement, can he silence the haters and show that he isn't a one year wonder?</p>
   </div>
 
   <!-- COMPETITOR 2 -->
@@ -322,33 +315,32 @@ footer{
       <button class="carousel-btn left" type="button" aria-label="Scroll left">‹</button>
 
       <div class="carousel" aria-label="David Kim photo carousel">
-        <div class="slide">
-          <img src="david-1.jpg" alt="David Kim photo 1">
-          <div class="overlay">
-            <p class="name">David Kim</p>
-            <p class="nick">“Tom” Kim</p>
-            <div class="chips">
-              <span class="chip">Veteran presence</span>
-              <span class="chip">Pure iron play</span>
-              <span class="chip">Comeback week</span>
-            </div>
-            <div class="stats">
-              <span class="stat"><strong>Style:</strong> Technician</span>
-              <span class="stat"><strong>Focus:</strong> Volatile</span>
-              <span class="stat"><strong>Ceiling:</strong> Massive</span>
-            </div>
-          </div>
-        </div>
-
+        <div class="slide"><img src="david-1.jpg" alt="David Kim photo 1"></div>
         <div class="slide"><img src="david-2.jpg" alt="David Kim photo 2"></div>
         <div class="slide"><img src="david-3.jpg" alt="David Kim photo 3"></div>
       </div>
 
       <button class="carousel-btn right" type="button" aria-label="Scroll right">›</button>
+
+      <div class="title-card">
+        <div class="title-top">
+          <p class="title-name">David Kim</p>
+          <p class="title-nick">“Tom” Kim</p>
+        </div>
+        <ul class="chips">
+          <li class="chip">Veteran presence</li>
+          <li class="chip">Pure iron play</li>
+          <li class="chip">Comeback week</li>
+        </ul>
+        <div class="stats">
+          <span><strong>Style:</strong> Technician</span>
+          <span><strong>Focus:</strong> Volatile</span>
+          <span><strong>Ceiling:</strong> Massive</span>
+        </div>
+      </div>
     </div>
 
-    <h3>David Kim</h3>
-    <p>As a true man of wisdom, David "Tom" Kim was the first of his peers to pick up the mighty iron to play a round of golf. As a seasoned veteran, his golf game exhibits tremendous experience, displaying an incredible amount of skill only few could achieve in a lifetime. Winning every tournaments was easy, and David was riding the highs of golf and life. However those were not the only highs David was riding. Suffering from addiction, David struggled to stay away from Fentanyl and was caught abusing the substance at work. Now trying to move on from this incident, can David stay sober for the most important week of his life?</p>
+    <p class="bio">As a true man of wisdom, David "Tom" Kim was the first of his peers to pick up the mighty iron to play a round of golf. As a seasoned veteran, his golf game exhibits tremendous experience, displaying an incredible amount of skill only few could achieve in a lifetime. Winning every tournaments was easy, and David was riding the highs of golf and life. However those were not the only highs David was riding. Suffering from addiction, David struggled to stay away from Fentanyl and was caught abusing the substance at work. Now trying to move on from this incident, can David stay sober for the most important week of his life?</p>
   </div>
 
   <!-- COMPETITOR 3 -->
@@ -357,33 +349,32 @@ footer{
       <button class="carousel-btn left" type="button" aria-label="Scroll left">‹</button>
 
       <div class="carousel" aria-label="John Kim photo carousel">
-        <div class="slide">
-          <img src="john-1.jpg" alt="John Kim photo 1">
-          <div class="overlay">
-            <p class="name">John Kim</p>
-            <p class="nick">“John Rahm”</p>
-            <div class="chips">
-              <span class="chip">Prodigy</span>
-              <span class="chip">Major machine</span>
-              <span class="chip">High stakes</span>
-            </div>
-            <div class="stats">
-              <span class="stat"><strong>Style:</strong> Wizardry</span>
-              <span class="stat"><strong>Edge:</strong> Fearless</span>
-              <span class="stat"><strong>Need:</strong> Payday</span>
-            </div>
-          </div>
-        </div>
-
+        <div class="slide"><img src="john-1.jpg" alt="John Kim photo 1"></div>
         <div class="slide"><img src="john-2.jpg" alt="John Kim photo 2"></div>
         <div class="slide"><img src="john-3.jpg" alt="John Kim photo 3"></div>
       </div>
 
       <button class="carousel-btn right" type="button" aria-label="Scroll right">›</button>
+
+      <div class="title-card">
+        <div class="title-top">
+          <p class="title-name">John Kim</p>
+          <p class="title-nick">“John Rahm”</p>
+        </div>
+        <ul class="chips">
+          <li class="chip">Prodigy</li>
+          <li class="chip">Major machine</li>
+          <li class="chip">High stakes</li>
+        </ul>
+        <div class="stats">
+          <span><strong>Style:</strong> Wizardry</span>
+          <span><strong>Edge:</strong> Fearless</span>
+          <span><strong>Need:</strong> Payday</span>
+        </div>
+      </div>
     </div>
 
-    <h3>John Kim</h3>
-    <p>He may be the youngest competitor in the field, but don't be fooled, "John Rahm" has it all. Globally recognized as a golf protigy since age 3, he has exceeded all expectations and lived out his golf career to the highest potential. 9x Master, 7x US Open, 8x PGA Championship, 6x The Open Championship, and 1x Roger Cup Winner, all accomplished before age 26 where he then chose a different career path to become a physical therapist. However recent allegations of innapropriate behavior during physical therapy sessions have left his job in jeopardy. As his funds run low due to the ongoing lawsuit, John Rahm makes a return to the game he once loved to secure a check and his place in golf history. Does the young wizard have enough magic to cash in or will he post himself on Craig's List in the coming months?</p>
+    <p class="bio">He may be the youngest competitor in the field, but don't be fooled, "John Rahm" has it all. Globally recognized as a golf protigy since age 3, he has exceeded all expectations and lived out his golf career to the highest potential. 9x Master, 7x US Open, 8x PGA Championship, 6x The Open Championship, and 1x Roger Cup Winner, all accomplished before age 26 where he then chose a different career path to become a physical therapist. However recent allegations of innapropriate behavior during physical therapy sessions have left his job in jeopardy. As his funds run low due to the ongoing lawsuit, John Rahm makes a return to the game he once loved to secure a check and his place in golf history. Does the young wizard have enough magic to cash in or will he post himself on Craig's List in the coming months?</p>
   </div>
 
   <!-- COMPETITOR 4 -->
@@ -392,33 +383,32 @@ footer{
       <button class="carousel-btn left" type="button" aria-label="Scroll left">‹</button>
 
       <div class="carousel" aria-label="Roger Kim photo carousel">
-        <div class="slide">
-          <img src="roger-1.jpg" alt="Roger Kim photo 1">
-          <div class="overlay">
-            <p class="name">Roger Kim</p>
-            <p class="nick">“Roger Matsuyama”</p>
-            <div class="chips">
-              <span class="chip">Survivor</span>
-              <span class="chip">Raw talent</span>
-              <span class="chip">Redemption arc</span>
-            </div>
-            <div class="stats">
-              <span class="stat"><strong>Style:</strong> Chaos</span>
-              <span class="stat"><strong>Clutch:</strong> TBD</span>
-              <span class="stat"><strong>Story:</strong> Legendary</span>
-            </div>
-          </div>
-        </div>
-
+        <div class="slide"><img src="roger-1.jpg" alt="Roger Kim photo 1"></div>
         <div class="slide"><img src="roger-2.jpg" alt="Roger Kim photo 2"></div>
         <div class="slide"><img src="roger-3.jpg" alt="Roger Kim photo 3"></div>
       </div>
 
       <button class="carousel-btn right" type="button" aria-label="Scroll right">›</button>
+
+      <div class="title-card">
+        <div class="title-top">
+          <p class="title-name">Roger Kim</p>
+          <p class="title-nick">“Roger Matsuyama”</p>
+        </div>
+        <ul class="chips">
+          <li class="chip">Survivor</li>
+          <li class="chip">Raw talent</li>
+          <li class="chip">Redemption arc</li>
+        </ul>
+        <div class="stats">
+          <span><strong>Style:</strong> Chaos</span>
+          <span><strong>Clutch:</strong> TBD</span>
+          <span><strong>Story:</strong> Legendary</span>
+        </div>
+      </div>
     </div>
 
-    <h3>Roger Kim</h3>
-    <p>Escaping from the treacherous work camps of North Korea to find freedom in the United States, "Roger Matsuyama" initially used golf as a means of therapy to recover from his PTSD. Others quickly realized that he was given an extraodinary gift and urged him to compete on the PGA Tour. He quickly found fame and success and enjoyed the riches of his new career, however few could predict what would happened next. Roger's Meth and Kratom addiction was too much to overcome and he was stripped of his PGA Tour card. With something to prove, can Roger find redemption on and off the golf course?</p>
+    <p class="bio">Escaping from the treacherous work camps of North Korea to find freedom in the United States, "Roger Matsuyama" initially used golf as a means of therapy to recover from his PTSD. Others quickly realized that he was given an extraodinary gift and urged him to compete on the PGA Tour. He quickly found fame and success and enjoyed the riches of his new career, however few could predict what would happened next. Roger's Meth and Kratom addiction was too much to overcome and he was stripped of his PGA Tour card. With something to prove, can Roger find redemption on and off the golf course?</p>
   </div>
 
 </section>
@@ -426,7 +416,7 @@ footer{
 <footer>© Nadmir Open — MIT Licensed</footer>
 
 <script>
-/* Arrow buttons that scroll exactly one “slide” at a time, while previews remain visible */
+/* Arrow buttons: scroll exactly one slide width while previews remain visible */
 (function(){
   const wraps = document.querySelectorAll('[data-carousel]');
   wraps.forEach(wrap => {
@@ -437,7 +427,6 @@ footer{
     const getStep = () => {
       const slide = carousel.querySelector('.slide');
       if (!slide) return 400;
-      // scroll one slide width + gap
       const style = window.getComputedStyle(carousel);
       const gap = parseFloat(style.columnGap || style.gap || 0);
       return slide.getBoundingClientRect().width + gap;
