@@ -70,7 +70,7 @@ header > *{ position:relative; z-index:1; }
 
 /* Logo above the title (visible but not dominant) */
 .header-mark{
-  width:96px; /* bigger than before, still subtle */
+  width:96px;
   height:auto;
   display:block;
   margin:0 auto 0.75rem;
@@ -122,7 +122,7 @@ section{
 /* ARROWS */
 .carousel-btn{
   position:absolute;
-  top:calc(1.5rem + 180px); /* centered for 360px slide height */
+  top:calc(1.5rem + 200px); /* ✅ centered for 400px slide height */
   transform:translateY(-50%);
   width:46px;
   height:46px;
@@ -155,20 +155,20 @@ section{
   padding:0;
 }
 
-/* Slides: big look, full image visible (no cut-off) */
+/* Slides: larger, full image visible */
 .slide{
   flex:0 0 78%;
-  height:360px;
+  height:400px;                 /* ✅ was 360px */
   border-radius:16px;
   overflow:hidden;
   box-shadow:0 12px 25px rgba(0,0,0,0.20);
   scroll-snap-align:start;
-  background:#ffffff; /* letterbox background */
+  background:#ffffff;
 }
 .slide img{
   width:100%;
   height:100%;
-  object-fit:contain; /* ✅ shows entire image */
+  object-fit:contain;
   display:block;
   background:#ffffff;
 }
@@ -248,8 +248,8 @@ section{
 }
 @media(max-width:768px){
   .carousel-wrap{ padding:1rem; }
-  .slide{ height:260px; flex-basis:92%; }
-  .carousel-btn{ top:calc(1rem + 130px); }
+  .slide{ height:300px; flex-basis:92%; } /* ✅ was 260px */
+  .carousel-btn{ top:calc(1rem + 150px); } /* ✅ centered for 300px */
   header h1{ font-size:2.35rem; }
   .header-mark{ width:78px; margin-bottom:0.6rem; }
   .title-name{ font-size:1.32rem; }
