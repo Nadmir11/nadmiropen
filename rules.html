@@ -209,6 +209,7 @@ section{
   background:#fff;
   border:1px solid #e5e7eb;
   margin-top:0.25rem;
+  table-layout:fixed; /* ✅ helps prevent weird spacing */
 }
 .table th, .table td{
   padding:0.8rem 0.85rem;
@@ -222,8 +223,15 @@ section{
 }
 .table tr:last-child td{ border-bottom:none; }
 
-.right{ text-align:right; }
 .center{ text-align:center; }
+
+/* ✅ NEW: tighter numeric column */
+.num-col{
+  width:110px;          /* 👈 makes the right column tighter */
+  text-align:center;    /* 👈 centers header + values */
+  padding-left:0.4rem;  /* 👈 reduces the extra “empty” feel */
+  padding-right:0.4rem;
+}
 
 /* FOOTNOTE */
 .asterisk{
@@ -309,12 +317,12 @@ footer{
         <table class="table" aria-label="Point System per round">
           <tr>
             <th class="center">Finish</th>
-            <th class="right">Points</th>
+            <th class="num-col">Points</th>
           </tr>
-          <tr><td class="center">1st</td><td class="right">+50</td></tr>
-          <tr><td class="center">2nd</td><td class="right">+40</td></tr>
-          <tr><td class="center">3rd</td><td class="right">+30</td></tr>
-          <tr><td class="center">4th</td><td class="right">+20</td></tr>
+          <tr><td class="center">1st</td><td class="num-col">+50</td></tr>
+          <tr><td class="center">2nd</td><td class="num-col">+40</td></tr>
+          <tr><td class="center">3rd</td><td class="num-col">+30</td></tr>
+          <tr><td class="center">4th</td><td class="num-col">+20</td></tr>
         </table>
       </div>
 
@@ -336,12 +344,12 @@ footer{
         <table class="table" aria-label="Prize pool breakdown">
           <tr>
             <th>Place</th>
-            <th class="right">Payout</th>
+            <th class="num-col">Payout</th>
           </tr>
-          <tr><td>1st</td><td class="right">$45</td></tr>
-          <tr><td>2nd</td><td class="right">$35</td></tr>
-          <tr><td>3rd</td><td class="right">$20</td></tr>
-          <tr><td>4th</td><td class="right">$0</td></tr>
+          <tr><td>1st</td><td class="num-col">$45</td></tr>
+          <tr><td>2nd</td><td class="num-col">$35</td></tr>
+          <tr><td>3rd</td><td class="num-col">$20</td></tr>
+          <tr><td>4th</td><td class="num-col">$0</td></tr>
         </table>
       </div>
 
