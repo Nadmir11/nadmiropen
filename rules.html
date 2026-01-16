@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nadmir Open – Rules</title>
+<title>Nadmir Open – Tournament Rules</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -16,6 +16,7 @@
   --body-bg:#f5f5f5;
   --card-bg:#ffffff;
   --shadow:rgba(0,0,0,0.12);
+  --muted:#6b7280;
 }
 
 /* BASE */
@@ -94,7 +95,7 @@ header h1{
 
 /* LAYOUT */
 section{
-  max-width:900px; /* slightly narrower for reading */
+  max-width:1050px;
   margin:3.5rem auto;
   padding:0 1.5rem;
 }
@@ -107,44 +108,108 @@ section{
   padding:1.75rem 2rem 2.1rem;
 }
 
-/* SECTION TITLE */
+/* TITLES */
 .section-title{
   font-family:'Playfair Display', serif;
   font-size:1.9rem;
   color:var(--dark-green);
   margin:0 0 1.25rem 0;
+  position:relative;
+  padding-top:1.1rem;
+}
+.section-title::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:72px;
+  height:3px;
+  background:var(--gold);
+  border-radius:999px;
+}
+.section-title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-0.7rem;
+  width:100%;
+  height:3px;
+  background:var(--light-green);
+  border-radius:999px;
 }
 
-/* RULE LIST */
-.rules{
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+}
+
+/* PANELS */
+.panel{
+  border:1px solid #e5e7eb;
+  background:#fafafa;
+  border-radius:16px;
+  padding:1.1rem 1.2rem;
+}
+
+.panel h3{
+  margin:0 0 0.65rem;
+  font-family:'Playfair Display', serif;
+  color:var(--dark-green);
+  font-size:1.25rem;
+}
+
+.panel p{
+  margin:0;
+  color:#374151;
+  line-height:1.7;
+}
+
+.list{
   list-style:none;
   padding:0;
   margin:0;
+  display:grid;
+  gap:0.7rem;
 }
-.rule{
+
+.item{
   display:flex;
-  gap:1rem;
-  padding:0.9rem 0;
-  border-bottom:1px solid #e5e7eb;
+  gap:0.8rem;
+  align-items:flex-start;
+  line-height:1.55;
 }
-.rule:last-child{
-  border-bottom:none;
-}
-.rule-num{
-  flex:0 0 36px;
-  height:36px;
+
+.bullet{
+  width:22px;
+  height:22px;
   border-radius:999px;
-  background:rgba(212,175,55,0.18);
-  color:var(--dark-green);
-  font-weight:800;
+  background:rgba(212,175,55,0.16);
+  border:1px solid rgba(212,175,55,0.38);
   display:flex;
   align-items:center;
   justify-content:center;
+  margin-top:0.15rem;
 }
-.rule-text{
-  font-size:1.03rem;
-  line-height:1.7;
+.bullet::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:var(--gold);
+}
+
+/* FOOTNOTE */
+.asterisk{
+  margin-top:1.4rem;
+  padding-top:1rem;
+  border-top:1px dashed #e5e7eb;
+  font-size:0.95rem;
   color:#374151;
+}
+.asterisk strong{
+  color:var(--dark-green);
 }
 
 /* FOOTER */
@@ -157,9 +222,11 @@ footer{
 }
 
 /* RESPONSIVE */
+@media(max-width:900px){
+  .grid{ grid-template-columns:1fr; }
+}
 @media(max-width:768px){
   header h1{ font-size:2.35rem; }
-  .header-mark{ width:78px; }
 }
 @media(max-width:600px){
   nav a{ margin:0.5rem; }
@@ -171,7 +238,6 @@ footer{
 
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="founder.html">Founder</a>
@@ -182,7 +248,6 @@ footer{
   <a href="leaderboard.html">Leaderboard</a>
 </nav>
 
-<!-- HEADER -->
 <header>
   <img class="header-mark" src="nadmir-logo.png" alt="Nadmir Open Mark">
   <h1>Tournament Rules</h1>
@@ -193,28 +258,36 @@ footer{
   <div class="card">
     <h2 class="section-title">Rules</h2>
 
-    <ul class="rules">
-      <li class="rule">
-        <span class="rule-num">1</span>
-        <p class="rule-text">Standard stroke play rules apply throughout the tournament.</p>
-      </li>
-      <li class="rule">
-        <span class="rule-num">2</span>
-        <p class="rule-text">All competitors are expected to play with integrity, professionalism, and sportsmanship.</p>
-      </li>
-      <li class="rule">
-        <span class="rule-num">3</span>
-        <p class="rule-text">A maximum of four players are permitted per group unless otherwise directed.</p>
-      </li>
-      <li class="rule">
-        <span class="rule-num">4</span>
-        <p class="rule-text">Ties for first place will be decided by a sudden-death playoff.</p>
-      </li>
-      <li class="rule">
-        <span class="rule-num">5</span>
-        <p class="rule-text">Violation of any of these rules will result in immediate death.</p>
-      </li>
-    </ul>
+    <div class="grid">
+
+      <!-- GOVERNING RULES -->
+      <div class="panel">
+        <h3>Governing Rules</h3>
+        <ul class="list">
+          <li class="item"><span class="bullet"></span><span><strong>All USGA rules apply</strong> unless explicitly stated otherwise.</span></li>
+          <li class="item"><span class="bullet"></span><span><strong>No putts will be given.</strong></span></li>
+          <li class="item"><span class="bullet"></span><span><strong>All holes must be completely holed out.</strong></span></li>
+          <li class="item"><span class="bullet"></span><span><strong>No score capping</strong> (including double par).</span></li>
+        </ul>
+      </div>
+
+      <!-- SCORING & FORMAT -->
+      <div class="panel">
+        <h3>Scoring & Format</h3>
+        <p>
+          The tournament consists of one practice round followed by three official
+          tournament rounds. All strokes count. Integrity and honesty are assumed
+          at all times.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ASTERISK FOOTNOTE -->
+    <div class="asterisk">
+      <strong>*</strong> Violation of any of these rules will result in immediate death.
+    </div>
+
   </div>
 </section>
 
